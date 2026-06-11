@@ -1,0 +1,96 @@
+search:
+  keywords:
+    primary:
+      - "regulatory affairs EU"
+      - "regulatory affairs digital"
+      - "government affairs technology"
+      - "public affairs digital"
+      - "policy officer AI"
+      - "policy officer digital"
+      - "compliance officer GDPR"
+      - "compliance officer AI Act"
+      - "compliance officer DSA"
+      - "data protection officer"
+      - "EU affairs technology"
+      - "AI governance"
+      - "tech policy"
+      - "legal counsel regulatory"
+    secondary:
+      - "EU affairs consultant"
+      - "privacy counsel"
+      - "privacy officer"
+      - "digital policy"
+      - "platform regulation"
+
+  locations:
+    - "Berlin, Germany"
+    - "Munich, Germany"
+    - "Hamburg, Germany"
+    - "Frankfurt, Germany"
+    - "Brussels, Belgium"
+    - "Paris, France"
+
+  results_per_search: 15
+  hours_old: 72  # fetch jobs posted within last 72 hours
+
+sources:
+  jobspy: true        # LinkedIn, Indeed, Glassdoor, Google Jobs
+  rss: true           # EurActiv, Eurobrussels, EPSO
+  playwright: true    # StepStone, XING, Welcome to the Jungle, Interamt
+
+rss_feeds:
+  - name: "EurActiv Jobs"
+    url: "https://jobs.euractiv.com/feed/"
+  - name: "Eurobrussels"
+    url: "https://www.eurobrussels.com/rss/vacancies.rss"
+  - name: "EPSO"
+    url: "https://epso.europa.eu/en/rss.xml"
+
+playwright_sources:
+  - name: "StepStone DE"
+    enabled: true
+  - name: "XING Jobs"
+    enabled: true
+  - name: "Welcome to the Jungle"
+    enabled: true
+  - name: "Interamt"
+    enabled: false  # German public sector; requires German — enable manually
+
+applicant:
+  name: "Sophie Patras"
+  email: "sophie.patras@coleurope.eu"
+  phone: "+32 485 77 95 20"
+  location: "Tubize, Belgium"
+
+llm:
+  # ── Provider selection ──────────────────────────────────────────────────────
+  # google    : Gemini free tier — get a key at aistudio.google.com (no credit card)
+  # anthropic : Claude — requires paid API key at console.anthropic.com
+  # ollama    : fully local — install from ollama.ai, then: ollama pull llama3.2
+  provider: "google"
+
+  # Google (free tier: 1 500 req/day, 15 RPM on gemini-2.0-flash)
+  google_model: "gemini-2.0-flash"
+
+  # Anthropic (if you ever add a key)
+  anthropic_model: "claude-sonnet-4-6"
+  anthropic_senior_model: "claude-opus-4-8"
+
+  # Ollama (local)
+  ollama_model: "llama3.2"
+  ollama_url: "http://localhost:11434"
+
+paths:
+  output_dir: "output"
+  database: "jobs.db"
+  applications_csv: "applications.csv"
+  base_cv: "base_cv.md"
+  base_cover_letter: "base_cover_letter.md"
+
+# Follow-up: how many days after applying to schedule the first follow-up
+follow_up_days: 7
+
+scheduler:
+  task_name: "JobPosterSophie-Collector"
+  run_time: "08:00"   # 24h HH:MM — change here, then re-run setup_scheduler.py
+  log_file: "logs/collector.log"

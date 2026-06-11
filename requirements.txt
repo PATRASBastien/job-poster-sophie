@@ -1,0 +1,14 @@
+# Core
+# python-jobspy>=1.1.0  # see install note below — install separately after numpy
+feedparser>=6.0.11
+playwright>=1.40.0
+python-dotenv>=1.0.0
+rich>=13.0.0
+pandas>=2.0.0
+pyyaml>=6.0.1
+requests>=2.31.0
+
+# LLM providers — install the one matching config.yaml llm.provider
+google-genai>=1.0.0          # provider: google  (free tier, no credit card)
+# anthropic>=0.40.0          # provider: anthropic (uncomment if you get a key)
+# ollama provider uses requests (already listed above) — no extra package needed
